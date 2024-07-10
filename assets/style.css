@@ -122,6 +122,14 @@ header {
 	object-position: center;
 }
 /* Code CSS en prévision de l'ajout d'un carousel pour la bannière */
+
+.caroussel__content {
+	width: 100%;
+	display: flex;
+	justify-content: space-around;
+	align-items: center;
+}
+
 /* Gestion des fleches du carrousel */
 #banner .arrow {
 	position: absolute;
