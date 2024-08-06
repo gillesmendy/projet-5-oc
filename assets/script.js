@@ -51,4 +51,3 @@ updateCarousel(currentIndex);
 //fct pour creer tous les points pour etat initial, point remplit = slide affiche, 
 //ajouter une classe pour point actif, creer point + id sur les points
 //utiliser current index logique
-
