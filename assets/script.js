@@ -21,6 +21,18 @@ const slides = [
 let currentIndex = 0;
 const bannerImage = document.getElementById('bannerImage');
 const tagline = document.getElementById('tagline');
+const dots = document.querySelectorAll('.dot');
+
+// Mise à jour des dots
+function updateDots(index) {
+    dots.forEach((dot, dotIndex) => {
+        if (dotIndex === index) {
+            dot.classList.add('dot_selected');
+        } else {
+            dot.classList.remove('dot_selected');
+        }
+    });
+}
 
 // Mise a jour images caroussel
 function updateCarousel(index) {
