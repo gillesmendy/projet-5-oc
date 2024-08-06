@@ -38,6 +38,7 @@ function updateDots(index) {
 function updateCarousel(index) {
     bannerImage.src = `./assets/images/slideshow/${slides[index].image}`;
     tagline.innerHTML = slides[index].tagLine;
+	updateDots(index);
 }
 
 // Evenements et fleches
@@ -56,6 +57,8 @@ document.getElementById('next').addEventListener('click', () => {
 	currentIndex = 0
     updateCarousel(currentIndex);
 });
+
+
 
 // Initialisation du carrousel
 updateCarousel(currentIndex);
