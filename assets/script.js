@@ -17,22 +17,87 @@ const slides = [
 	}
 ]
 
+const arrowLeft = document.getElementById("previous");
+const arrowRight = document.getElementById("next");
 
+let i = 0;
+
+const bannerImage = document.getElementById('bannerImage');
+const tagline = document.getElementById('tagline');
+const dotContainer = document.querySelector('.dots');
+
+function createDot() {
+	slides.forEach((slide, index) => {
+		let dot = document.createElement("div");
+		dot.classList.add("dot");
+		if (index === 0) dot.classList.add("dot_selected");
+
+		dot.addEventListener("click", function() {
+			changeSlideTo(index);
+		});
+
+		dotContainer.appendChild(dot)
+	});
+};
+
+// Mise à jour des dots
+function updateDots() {
+	let dots = document.querySelectorAll(".dot");
+    dots.forEach((dot, index) => {
+		dot.classList.toggle("dot_selected", index === i)
+    });
+};
+
+// Mise a jour images caroussel
+function changeSlide(direction) {
+	i = i + direction;
+
+	if (i > slides.length - 1) {
+		i = 0; 
+	}
+
+	if (i < 0) {
+		i = slides.length - 1;
+	}
+
+    bannerImage.src = `./assets/images/slideshow/${slides[i].image}`;
+    tagline.innerHTML = slides[i].tagLine;
+	updateDots();
+}
+
+function changeSlideTo(index) {
+	i = index;
+
+	bannerImage.src = `./assets/images/slideshow/${slides[i].image}`;
+    tagline.innerHTML = slides[i].tagLine;
+	updateDots();
+}
+
+arrowLeft.addEventListener("click", function() {
+	changeSlide(-1)
+});
+
+arrowRight.addEventListener("click", function() {
+	changeSlide(1)
+});
+
+// Initialisation du carrousel
+createDot();
+
+
+
+
+
+
+
+
+
+/*
 let currentIndex = 0;
 const bannerImage = document.getElementById('bannerImage');
 const tagline = document.getElementById('tagline');
 const dots = document.querySelectorAll('.dot');
 
-// Mise à jour des dots
-function updateDots(index) {
-    dots.forEach((dot, dotIndex) => {
-        if (dotIndex === index) {
-            dot.classList.add('dot_selected');
-        } else {
-            dot.classList.remove('dot_selected');
-        }
-    });
-}
 
 // Mise a jour images caroussel
 function updateCarousel(index) {
@@ -58,11 +123,20 @@ document.getElementById('next').addEventListener('click', () => {
     updateCarousel(currentIndex);
 });
 
+// Mise à jour des dots
+function updateDots(index) {
+    dots.forEach((dot, dotIndex) => {
+        if (dotIndex === index) {
+            dot.classList.add('dot_selected');
+        } else {
+            dot.classList.remove('dot_selected');
+        }
+    });
+}
 
 
 // Initialisation du carrousel
 updateCarousel(currentIndex);
+updateDots();//
+*/
 
-//fct pour creer tous les points pour etat initial, point remplit = slide affiche, 
-//ajouter une classe pour point actif, creer point + id sur les points
-//utiliser current index logique
